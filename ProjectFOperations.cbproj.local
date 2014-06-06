@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.646,C:\Users\al\Documents\RAD Studio\Projects\Project1PCH1.h=C:\Users\al\Dropbox\Программы\Fuzzy Operations\ProjectFuzzyOperations.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.697,C:\Users\al\Documents\RAD Studio\Projects\Project1.cbproj=C:\Users\al\Dropbox\Программы\Fuzzy Operations\ProjectFOperations.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Documents\RAD Studio\Projects\Unit1.h=C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.693,=C:\Users\al\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Documents\RAD Studio\Projects\Unit1.cpp=C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.665,=C:\Users\al\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2014.06.06 01:37:27.753,=C:\Users\al\Dropbox\Программы\Fuzzy Operations\File1.cpp</Transaction>
+    <Transaction>2014.06.06 01:47:04.236,=C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.cpp</Transaction>
+    <Transaction>2014.06.06 01:48:35.838,C:\Users\al\Dropbox\Программы\Fuzzy Operations\FuzzyNumber.h=C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.h</Transaction>
+    <Transaction>2014.06.06 01:48:35.838,C:\Users\al\Dropbox\Программы\Fuzzy Operations\FuzzyNumber.cpp=C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.cpp</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="MainUnit.cpp"/>
+    <File Path="MainUnit.cpp"/>
+    <File Path="MainUnit.dfm"/>
+    <File Path="MainUnit.h"/>
+    <File Path="ProjectFOperations.cpp"/>
+    <File Path="ProjectFuzzyOperations.h"/>
+    <File Path="FuzzyNumber.cpp"/>
+    <File Path="FuzzyNumber.cpp"/>
+    <File Path="FuzzyNumber.h"/>
+  </ProjectSortOrder>
+</BorlandProject>
