@@ -203,3 +203,43 @@ void __fastcall TMainForm::ListViewNumbersClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TMainForm::CheckBoxTriangleClick(TObject *Sender)
+{
+	if(true == CheckBoxTriangle->Checked)
+	{
+		EditB->Enabled = false;
+		CheckBoxTrapezoidal->Checked = false;
+	}else
+	{
+		EditB->Enabled = true;
+		CheckBoxTrapezoidal->Checked = true;
+	}
+	ListViewNumbers->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::CheckBoxTrapezoidalClick(TObject *Sender)
+{
+	if(true == CheckBoxTrapezoidal->Checked)
+	{
+		EditB->Enabled = true;
+		CheckBoxTriangle->Checked = false;
+	}else
+	{
+		EditB->Enabled = false;
+		CheckBoxTriangle->Checked = true;
+	}
+	ListViewNumbers->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TMainForm::EditAChange(TObject *Sender)
+{
+if (true == CheckBoxTriangle->Checked)
+{
+	EditB->Text = EditA->Text;
+}
+}
+//---------------------------------------------------------------------------
+

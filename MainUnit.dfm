@@ -59,11 +59,13 @@ object MainForm: TMainForm
     View3D = False
     TabOrder = 1
     Anchors = [akLeft, akTop, akRight, akBottom]
-    ExplicitWidth = 453
-    ExplicitHeight = 245
-    DefaultCanvas = 'TGDIPlusCanvas'
     ColorPaletteIndex = 13
     object Series1: TAreaSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
       AreaChartBrush.Color = clGray
       AreaChartBrush.BackColor = clDefault
       DrawArea = True
@@ -118,6 +120,7 @@ object MainForm: TMainForm
       Height = 21
       TabOrder = 0
       Text = '5'
+      OnChange = EditAChange
     end
     object EditL: TEdit
       Left = 12
@@ -136,7 +139,7 @@ object MainForm: TMainForm
       Text = '7'
     end
     object ButtonAdd: TButton
-      Left = 38
+      Left = 60
       Top = 87
       Width = 115
       Height = 25
@@ -145,7 +148,7 @@ object MainForm: TMainForm
       OnClick = ButtonAddClick
     end
     object ButtonDelete: TButton
-      Left = 171
+      Left = 193
       Top = 87
       Width = 115
       Height = 25
@@ -165,13 +168,13 @@ object MainForm: TMainForm
   object GroupBoxOperation: TGroupBox
     Left = 8
     Top = 151
-    Width = 370
+    Width = 175
     Height = 104
     Caption = #1054#1087#1077#1088#1072#1094#1080#1080
     TabOrder = 3
     object ButtonInverse: TButton
-      Left = 259
-      Top = 61
+      Left = 103
+      Top = 63
       Width = 41
       Height = 25
       Caption = '1/x'
@@ -179,8 +182,8 @@ object MainForm: TMainForm
       OnClick = ButtonInverseClick
     end
     object ButtonSub: TButton
-      Left = 259
-      Top = 22
+      Left = 103
+      Top = 24
       Width = 41
       Height = 25
       Caption = '-'
@@ -188,7 +191,7 @@ object MainForm: TMainForm
       OnClick = ButtonSubClick
     end
     object ButtonMultiply: TButton
-      Left = 41
+      Left = 31
       Top = 63
       Width = 41
       Height = 25
@@ -197,7 +200,7 @@ object MainForm: TMainForm
       OnClick = ButtonMultiplyClick
     end
     object ButtonSum: TButton
-      Left = 41
+      Left = 31
       Top = 24
       Width = 41
       Height = 25
@@ -237,5 +240,33 @@ object MainForm: TMainForm
     TabOrder = 4
     ViewStyle = vsReport
     OnClick = ListViewResultClick
+  end
+  object GroupBoxBumberType: TGroupBox
+    Left = 201
+    Top = 151
+    Width = 177
+    Height = 103
+    Caption = #1042#1080#1076' '#1074#1074#1086#1076#1080#1084#1099#1093' '#1095#1080#1089#1077#1083
+    TabOrder = 5
+    object CheckBoxTriangle: TCheckBox
+      Left = 34
+      Top = 32
+      Width = 97
+      Height = 17
+      Caption = #1058#1088#1077#1091#1075#1086#1083#1100#1085#1099#1077
+      TabOrder = 0
+      OnClick = CheckBoxTriangleClick
+    end
+    object CheckBoxTrapezoidal: TCheckBox
+      Left = 34
+      Top = 67
+      Width = 97
+      Height = 17
+      Caption = #1058#1088#1072#1087#1080#1094#1080#1074#1080#1076#1085#1099#1077
+      Checked = True
+      State = cbChecked
+      TabOrder = 1
+      OnClick = CheckBoxTrapezoidalClick
+    end
   end
 end

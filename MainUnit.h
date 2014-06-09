@@ -16,6 +16,7 @@
 #include <VclTee.TeeGDIPlus.hpp>
 
 #include "FuzzyNumber.h"
+#include <Vcl.CheckLst.hpp>
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
@@ -40,6 +41,9 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TEdit *EditB;
 	TListView *ListViewResult;
+	TGroupBox *GroupBoxBumberType;
+	TCheckBox *CheckBoxTriangle;
+	TCheckBox *CheckBoxTrapezoidal;
 	void __fastcall ButtonAddClick(TObject *Sender);
 	void __fastcall ButtonDeleteClick(TObject *Sender);
 	void __fastcall ButtonSumClick(TObject *Sender);
@@ -48,6 +52,9 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonMultiplyClick(TObject *Sender);
 	void __fastcall ListViewResultClick(TObject *Sender);
 	void __fastcall ListViewNumbersClick(TObject *Sender);
+	void __fastcall CheckBoxTriangleClick(TObject *Sender);
+	void __fastcall CheckBoxTrapezoidalClick(TObject *Sender);
+	void __fastcall EditAChange(TObject *Sender);
 private:	// User declarations
 	void DrawFuzzyNumber(FuzzyNumber x);
 	void AddResultNumber(const FuzzyNumber &sum);
