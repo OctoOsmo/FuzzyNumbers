@@ -53,6 +53,7 @@ void __fastcall TMainForm::ButtonDeleteClick(TObject *Sender) {
 		ListViewNumbers->Selected->Delete();
 		ListViewNumbers->Items->Item[ListViewNumbers->Items->Count - 1]
 			->Selected = true;
+		ChartFuzzy->Series[ListViewNumbers->Selected->Index+1]->Clear();
 	}
 	catch (...) {
 		ShowMessage("Не выделено на одного числа");
@@ -71,7 +72,7 @@ void TMainForm::DrawFuzzyNumber(FuzzyNumber sum) {
 // ---------------------------------------------------------------------------
 void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber) {
 //	ChartFuzzy->
-	if(11 > seriesNumber)
+	if(10 > seriesNumber)
 	{
 		ChartFuzzy->Series[seriesNumber]->Clear();
 		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_l, 0, FloatToStrF(sum.m_l, ffGeneral, 4, 6));
@@ -213,7 +214,9 @@ void __fastcall TMainForm::ListViewResultClick(TObject *Sender) {
 void __fastcall TMainForm::ListViewNumbersClick(TObject *Sender)
 {
 	if (ListViewNumbers->RowSelect && -1 != ListViewNumbers->ItemIndex)
-		DrawFuzzyNumber(ParseFuzzyLVItem(ListViewNumbers->ItemFocused));
+	{
+		//DrawFuzzyNumber(ParseFuzzyLVItem(ListViewNumbers->ItemFocused));
+	}
 }
 //---------------------------------------------------------------------------
 
