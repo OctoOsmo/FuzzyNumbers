@@ -3,6 +3,7 @@
 #ifndef FuzzyNumberH
 #define FuzzyNumberH
 #include <vector>
+#include <algorithm>
 //---------------------------------------------------------------------------
 class FuzzyNumber {
 private:
@@ -45,8 +46,14 @@ public:
 		FuzzyNumber c;
 		std::vector<double> v;
 		c.m = a.m * b.m;
-		c.a = a.a + b.a;
-		c.b = a.b + b.b;
+
+		v.push_back((a.m - a.a) * (b.m - b.a));
+		v.push_back((a.m - a.a) * (b.m + b.b));
+		v.push_back((a.m + a.b) * (b.m - b.a));
+		v.push_back((a.m + a.b) * (b.m + b.b));
+
+		c.a = c.m - *std::min_element(v.begin(), v.end());
+		c.b = *std::max_element(v.begin(), v.end()) - c.m;
 		return c;
 	}
 

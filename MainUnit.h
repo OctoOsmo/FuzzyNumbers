@@ -13,27 +13,43 @@
 #include <VCLTee.TeEngine.hpp>
 #include <VCLTee.TeeProcs.hpp>
 #include <VCLTee.Series.hpp>
+#include <VclTee.TeeGDIPlus.hpp>
+
+#include "FuzzyNumber.h"
 //---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
 __published:	// IDE-managed Components
+	TListView *ListViewNumbers;
+	TChart *ChartFuzzy;
+	TAreaSeries *Series1;
+	TListView *ListViewResult;
+	TGroupBox *GroupBoxInput;
 	TEdit *EditM;
 	TEdit *EditL;
 	TEdit *EditR;
-	TListView *ListViewNumbers;
 	TButton *ButtonAdd;
 	TButton *ButtonDelete;
-	TButton *ButtonSum;
-	TEdit *EditResult;
+	TLabel *LabelMiddle;
+	TLabel *LabelLeft;
+	TLabel *LabelRight;
+	TGroupBox *GroupBoxOperation;
+	TButton *ButtonInverse;
 	TButton *ButtonSub;
-	TChart *ChartFuzzy;
-	TAreaSeries *Series1;
+	TButton *ButtonMultiply;
+	TButton *ButtonSum;
 	void __fastcall ButtonAddClick(TObject *Sender);
-	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall ButtonDeleteClick(TObject *Sender);
 	void __fastcall ButtonSumClick(TObject *Sender);
 	void __fastcall ButtonSubClick(TObject *Sender);
+	void __fastcall ButtonInverseClick(TObject *Sender);
+	void __fastcall ButtonMultiplyClick(TObject *Sender);
+	void __fastcall ListViewResultClick(TObject *Sender);
 private:	// User declarations
+	void DrawFuzzyNumber(FuzzyNumber x);
+	void AddResultNumber(const FuzzyNumber &sum);
+	FuzzyNumber ParseFuzzyLVItem(TListItem *item);
+
 public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
 };

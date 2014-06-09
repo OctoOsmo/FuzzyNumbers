@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "MainUnit.h"
-#include "FuzzyNumber.h"
+
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -16,49 +16,25 @@ __fastcall TMainForm::TMainForm(TComponent* Owner) : TForm(Owner) {
 
 // ---------------------------------------------------------------------------
 void __fastcall TMainForm::ButtonAddClick(TObject *Sender) {
-	TListItem *ListItem;
-	// ListViewNumbers->Items->Add();
-	// ListViewNumbers->Items->Item[ListViewNumbers->ItemIndex]->SubItems->Strings[0] = "M";
-	ListItem = ListViewNumbers->Items->Add();
-	ListItem->Caption = ListItem->Index;
-	// ListViewNumbers->Items->Item[0]->SubItems->Append("1");
-	ListItem->SubItems->Add(EditM->Text);
-	ListItem->SubItems->Add(EditL->Text);
-	ListItem->SubItems->Add(EditR->Text);
-}
+	try {
+		if (StrToFloat(EditL->Text) < 0)
+			throw Exception(_T("Левое значение должно быть неотрицательным"));
+		if (StrToFloat(EditR->Text) < 0)
+			throw Exception(_T("Правое значение должно быть неотрицательным"));
+		StrToFloat(EditM->Text);
 
-// ---------------------------------------------------------------------------
-void __fastcall TMainForm::FormCreate(TObject *Sender) {
-	/*
+		TListItem *ListItem;
+		ListItem = ListViewNumbers->Items->Add();
+		ListItem->Caption = ListItem->Index;
+		ListItem->SubItems->Add(EditM->Text);
+		ListItem->SubItems->Add(EditL->Text);
+		ListItem->SubItems->Add(EditR->Text);
+	}
+	catch (Exception &e) {
+		MessageBox(0, e.ToString().c_str(), _T("Ошибка ввода"), MB_ICONWARNING);
+		return;
+	}
 
-	 const char Names[6][2][10] =
-	 {{"Rubble","Barny"},
-	 {"Michael", "Johnson"},
-	 {"Bunny", "Bugs"},
-	 {"Silver", "HiHo"},
-	 {"Simpson", "Bart"},
-	 {"Squirrel", "Rockey"}};
-
-	 TListColumn  *NewColumn;
-	 TListItem  *ListItem;
-	 TListView   *ListView = new TListView(this);
-
-	 ListView->Parent = this;
-	 ListView->Align = alBottom;
-	 ListView->ViewStyle = vsReport;
-	 NewColumn = ListView->Columns->Add();
-	 NewColumn->Caption = "Last";
-
-	 NewColumn = ListView->Columns->Add();
-	 NewColumn->Caption = "First";
-	 for (int i = 0; i < 6; i++)
-	 {
-	 ListItem = ListView->Items->Add();
-	 ListItem->Caption = Names[i][0];
-	 ListItem->SubItems->Add(Names[i][1]);
-	 }
-
-	 */
 }
 
 // ---------------------------------------------------------------------------
@@ -75,7 +51,7 @@ void __fastcall TMainForm::ButtonDeleteClick(TObject *Sender) {
 }
 
 // ---------------------------------------------------------------------------
-void DrawFuzzyNumber(FuzzyNumber x) {
+void TMainForm::DrawFuzzyNumber(FuzzyNumber sum) {
 	ChartFuzzy->Series[0]->Clear();
 	ChartFuzzy->Series[0]->AddXY(sum.m - sum.a, 0, FloatToStr(sum.m - sum.a));
 	ChartFuzzy->Series[0]->AddXY(sum.m, 1, FloatToStr(sum.m));
@@ -83,28 +59,44 @@ void DrawFuzzyNumber(FuzzyNumber x) {
 }
 
 // ---------------------------------------------------------------------------
+void TMainForm::AddResultNumber(const FuzzyNumber &sum) {
+	TListItem *ListItem;
+	ListItem = ListViewResult->Items->Add();
+	ListItem->Caption = ListItem->Index;
+	ListItem->SubItems->Add(sum.m);
+	ListItem->SubItems->Add(sum.a);
+	ListItem->SubItems->Add(sum.b);
+}
+
+// ---------------------------------------------------------------------------
+FuzzyNumber TMainForm::ParseFuzzyLVItem(TListItem *item) {
+	FuzzyNumber x;
+
+	x.m = StrToFloat(item->SubItems->operator[](0));
+	x.a = StrToFloat(item->SubItems->operator[](1));
+	x.b = StrToFloat(item->SubItems->operator[](2));
+
+	return x;
+}
+
+// ---------------------------------------------------------------------------
 void __fastcall TMainForm::ButtonSumClick(TObject *Sender) {
 	if (ListViewNumbers->Items->Count > 1) {
 		FuzzyNumber x;
 		FuzzyNumber sum;
-		sum.m = StrToFloat
-			(ListViewNumbers->Items->Item[0]->SubItems->operator[](0));
-		sum.a = StrToFloat
-			(ListViewNumbers->Items->Item[0]->SubItems->operator[](1));
-		sum.b = StrToFloat
-			(ListViewNumbers->Items->Item[0]->SubItems->operator[](2));
+		sum = ParseFuzzyLVItem(ListViewNumbers->Items->Item[0]);
 
 		for (int i = 1; i < ListViewNumbers->Items->Count; ++i) {
-			x.m = StrToFloat
-				(ListViewNumbers->Items->Item[i]->SubItems->operator[](0));
-			x.a = StrToFloat
-				(ListViewNumbers->Items->Item[i]->SubItems->operator[](1));
-			x.b = StrToFloat
-				(ListViewNumbers->Items->Item[i]->SubItems->operator[](2));
+			x = ParseFuzzyLVItem(ListViewNumbers->Items->Item[i]);
 			sum = sum + x;
 		}
-		EditResult->Text = FloatToStr(sum.m) + ";" + FloatToStr(sum.a) + ";" +
-			FloatToStr(sum.b);
+
+		// add result
+		{
+			ListViewResult->Clear();
+			AddResultNumber(sum);
+		}
+
 		DrawFuzzyNumber(sum);
 	}
 }
@@ -113,25 +105,100 @@ void __fastcall TMainForm::ButtonSumClick(TObject *Sender) {
 void __fastcall TMainForm::ButtonSubClick(TObject *Sender) {
 	if (ListViewNumbers->Items->Count > 1) {
 		FuzzyNumber x;
-		FuzzyNumber sum;
-		sum.m = StrToFloat
-			(ListViewNumbers->Items->Item[0]->SubItems->operator[](0));
-		sum.a = StrToFloat
-			(ListViewNumbers->Items->Item[0]->SubItems->operator[](1));
-		sum.b = StrToFloat
-			(ListViewNumbers->Items->Item[0]->SubItems->operator[](2));
+		FuzzyNumber sub;
+
+		sub = ParseFuzzyLVItem(ListViewNumbers->Items->Item[0]);
 
 		for (int i = 1; i < ListViewNumbers->Items->Count; ++i) {
-			x.m = StrToFloat
-				(ListViewNumbers->Items->Item[i]->SubItems->operator[](0));
-			x.a = StrToFloat
-				(ListViewNumbers->Items->Item[i]->SubItems->operator[](1));
-			x.b = StrToFloat
-				(ListViewNumbers->Items->Item[i]->SubItems->operator[](2));
-			sum = sum - x;
+			x = ParseFuzzyLVItem(ListViewNumbers->Items->Item[i]);
+			sub = sub - x;
 		}
-		EditResult->Text = FloatToStr(sum.m) + ";" + FloatToStr(sum.a) + ";" +
-			FloatToStr(sum.b);
+
+		// add result
+		{
+			ListViewResult->Clear();
+			AddResultNumber(sub);
+		}
+
+		DrawFuzzyNumber(sub);
+	}
+}
+
+// ---------------------------------------------------------------------------
+void __fastcall TMainForm::ButtonInverseClick(TObject *Sender) {
+	if (ListViewNumbers->Items->Count > 0) {
+		FuzzyNumber x, inverse;
+
+		// clear results
+		ListViewResult->Clear();
+
+		for (int i = 0; i < ListViewNumbers->Items->Count; ++i) {
+			x = ParseFuzzyLVItem(ListViewNumbers->Items->Item[i]);
+
+			if ((x.m - x.a) * (x.m + x.b) <= 0) {
+				MessageBox(0, _T("Обратного чилса не существует."),
+					_T("Ошибка!"), MB_ICONERROR);
+				return;
+			}
+
+			// check for zero middle value
+			if (x.m != 0) {
+				inverse.m = 1. / x.m;
+			}
+			else
+				inverse.m = 0;
+
+			// check for zero right value
+			if (0 == (x.m + x.b))
+				inverse.a = 0.0;
+			else
+				inverse.a = x.b * inverse.m / (x.m + x.b);
+
+			// check for zero left value
+			if (0 == (x.m - x.a))
+				inverse.b = 0.0;
+			else
+				inverse.b = x.a * inverse.m / (x.m - x.a);
+
+			// add result
+			{
+				AddResultNumber(inverse);
+			}
+			// draw the first inverted number
+			if (0 == i)
+				DrawFuzzyNumber(inverse);
+		}
+
+	}
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TMainForm::ButtonMultiplyClick(TObject *Sender) {
+	if (ListViewNumbers->Items->Count > 1) {
+		FuzzyNumber x;
+		FuzzyNumber mpy;
+
+		mpy = ParseFuzzyLVItem(ListViewNumbers->Items->Item[0]);
+
+		for (int i = 1; i < ListViewNumbers->Items->Count; ++i) {
+			x = ParseFuzzyLVItem(ListViewNumbers->Items->Item[i]);
+			mpy = mpy * x;
+		}
+
+		// add result
+		{
+			ListViewResult->Clear();
+			AddResultNumber(mpy);
+		}
+
+		DrawFuzzyNumber(mpy);
+	}
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TMainForm::ListViewResultClick(TObject *Sender) {
+	if (ListViewResult->RowSelect && -1 != ListViewResult->ItemIndex) {
+		DrawFuzzyNumber(ParseFuzzyLVItem(ListViewResult->ItemFocused));
 	}
 }
 // ---------------------------------------------------------------------------
