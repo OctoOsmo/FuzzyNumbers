@@ -24,11 +24,11 @@ void __fastcall TMainForm::ButtonAddClick(TObject *Sender) {
 		b = StrToFloat(EditB->Text);
 
 		if (l > a)
-			throw Exception(_T("Ћевое значение должно быть меньше правого модального"));
+			throw Exception(_T("Ћевое значение должно быть меньше правого модального значени€"));
 		if (a > b)
-			throw Exception(_T("Ћевое модальное значение должно быть меньше правого"));
+			throw Exception(_T("Ћевое модальное значение должно быть меньше правого значени€"));
 		if (b > r)
-			throw Exception(_T("ѕравое модальное значение должно быть меньше правого значение"));
+			throw Exception(_T("ѕравое модальное значение должно быть меньше правого значени€"));
 
 		TListItem *ListItem;
 		ListItem = ListViewNumbers->Items->Add();
@@ -37,6 +37,7 @@ void __fastcall TMainForm::ButtonAddClick(TObject *Sender) {
 		ListItem->SubItems->Add(EditA->Text);
 		ListItem->SubItems->Add(EditB->Text);
 		ListItem->SubItems->Add(EditR->Text);
+		DrawFuzzyNumberSeries(ParseFuzzyLVItem(ListItem), ListItem->Index+1);
 	}
 	catch (Exception &e) {
 		MessageBox(0, e.ToString().c_str(), _T("ќшибка ввода"), MB_ICONWARNING);
@@ -65,6 +66,19 @@ void TMainForm::DrawFuzzyNumber(FuzzyNumber sum) {
 	ChartFuzzy->Series[0]->AddXY(sum.m_a, 1, FloatToStrF(sum.m_a, ffGeneral, 4, 6));
 	ChartFuzzy->Series[0]->AddXY(sum.m_b, 1, FloatToStrF(sum.m_b, ffGeneral, 4, 6));
 	ChartFuzzy->Series[0]->AddXY(sum.m_r, 0, FloatToStrF(sum.m_r, ffGeneral, 4, 6));
+}
+
+// ---------------------------------------------------------------------------
+void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber) {
+//	ChartFuzzy->
+	if(11 > seriesNumber)
+	{
+		ChartFuzzy->Series[seriesNumber]->Clear();
+		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_l, 0, FloatToStrF(sum.m_l, ffGeneral, 4, 6));
+		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_a, 1, FloatToStrF(sum.m_a, ffGeneral, 4, 6));
+		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_b, 1, FloatToStrF(sum.m_b, ffGeneral, 4, 6));
+		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_r, 0, FloatToStrF(sum.m_r, ffGeneral, 4, 6));
+	}
 }
 
 // ---------------------------------------------------------------------------

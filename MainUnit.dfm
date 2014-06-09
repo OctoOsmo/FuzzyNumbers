@@ -60,15 +60,158 @@ object MainForm: TMainForm
     TabOrder = 1
     Anchors = [akLeft, akTop, akRight, akBottom]
     ColorPaletteIndex = 13
-    object Series1: TAreaSeries
+    object Series1: TLineSeries
       Marks.Arrow.Visible = True
       Marks.Callout.Brush.Color = clBlack
       Marks.Callout.Arrow.Visible = True
       Marks.ShapeStyle = fosRoundRectangle
       Marks.Visible = False
-      AreaChartBrush.Color = clGray
-      AreaChartBrush.BackColor = clDefault
-      DrawArea = True
+      SeriesColor = 10708548
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series2: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = clLime
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series3: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = clYellow
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series4: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = clRed
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series5: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = clAqua
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series6: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = clFuchsia
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series7: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = 8421440
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series8: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = 4227200
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series9: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = 33023
+      Brush.BackColor = clDefault
+      Pointer.InflateMargins = True
+      Pointer.Style = psRectangle
+      Pointer.Visible = False
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Y'
+      YValues.Order = loNone
+    end
+    object Series10: TLineSeries
+      Marks.Arrow.Visible = True
+      Marks.Callout.Brush.Color = clBlack
+      Marks.Callout.Arrow.Visible = True
+      Marks.ShapeStyle = fosRoundRectangle
+      Marks.Visible = False
+      SeriesColor = 16744448
+      Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
       Pointer.Visible = False
