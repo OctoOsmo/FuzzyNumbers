@@ -37,7 +37,7 @@ void __fastcall TMainForm::ButtonAddClick(TObject *Sender) {
 		ListItem->SubItems->Add(EditA->Text);
 		ListItem->SubItems->Add(EditB->Text);
 		ListItem->SubItems->Add(EditR->Text);
-		DrawFuzzyNumberSeries(ParseFuzzyLVItem(ListItem), ListItem->Index+1);
+		RedrawFuzzyNumberSeries();
 	}
 	catch (Exception &e) {
 		MessageBox(0, e.ToString().c_str(), _T("Ошибка ввода"), MB_ICONWARNING);
@@ -53,7 +53,8 @@ void __fastcall TMainForm::ButtonDeleteClick(TObject *Sender) {
 		ListViewNumbers->Selected->Delete();
 		ListViewNumbers->Items->Item[ListViewNumbers->Items->Count - 1]
 			->Selected = true;
-		ChartFuzzy->Series[ListViewNumbers->Selected->Index+1]->Clear();
+		RedrawFuzzyNumberSeries();
+		//ChartFuzzy->Series[ListViewNumbers->Selected->Index]->Clear();
 	}
 	catch (...) {
 		ShowMessage("Не выделено на одного числа");
@@ -71,7 +72,7 @@ void TMainForm::DrawFuzzyNumber(FuzzyNumber sum) {
 
 // ---------------------------------------------------------------------------
 void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber) {
-//	ChartFuzzy->
+	++seriesNumber;
 	if(10 > seriesNumber)
 	{
 		ChartFuzzy->Series[seriesNumber]->Clear();
@@ -84,6 +85,26 @@ void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber) {
 		if(10 == seriesNumber)
 			MessageBox(0, _T("На графике отобразится только 10 чисел."),	_T("Предупреждение"), MB_OK);
 	}
+}
+
+// ---------------------------------------------------------------------------
+void TMainForm::RedrawFuzzyNumberSeries() {
+	int Count = ListViewNumbers->Items->Count;
+	if(10 == Count)
+		MessageBox(0, _T("На графике отобразится только 10 чисел."),	_T("Предупреждение"), MB_OK);
+	if(10 < Count)
+		Count = 10;
+	for(int i = 1; i <= Count; ++i)//Series number hardcode
+	{
+		FuzzyNumber listFuzzy = ParseFuzzyLVItem(ListViewNumbers->Items->operator [](i-1));
+		ChartFuzzy->Series[i]->Clear();
+		ChartFuzzy->Series[i]->AddXY(listFuzzy.m_l, 0, FloatToStrF(listFuzzy.m_l, ffGeneral, 4, 6));
+		ChartFuzzy->Series[i]->AddXY(listFuzzy.m_a, 1, FloatToStrF(listFuzzy.m_a, ffGeneral, 4, 6));
+		ChartFuzzy->Series[i]->AddXY(listFuzzy.m_b, 1, FloatToStrF(listFuzzy.m_b, ffGeneral, 4, 6));
+		ChartFuzzy->Series[i]->AddXY(listFuzzy.m_r, 0, FloatToStrF(listFuzzy.m_r, ffGeneral, 4, 6));
+	}
+	for(int i = Count+1; i <10; ++i)
+		ChartFuzzy->Series[i]->Clear();
 }
 
 // ---------------------------------------------------------------------------
@@ -237,6 +258,8 @@ void __fastcall TMainForm::CheckBoxTriangleClick(TObject *Sender)
 		CheckBoxTrapezoidal->Checked = true;
 	}
 	ListViewNumbers->Clear();
+for(int i = 0; i < ChartFuzzy->SeriesCount(); ++i)
+	ChartFuzzy->Series[i]->Clear();
 }
 //---------------------------------------------------------------------------
 
@@ -252,6 +275,8 @@ void __fastcall TMainForm::CheckBoxTrapezoidalClick(TObject *Sender)
 		CheckBoxTriangle->Checked = true;
 	}
 	ListViewNumbers->Clear();
+for(int i = 0; i < ChartFuzzy->SeriesCount(); ++i)
+	ChartFuzzy->Series[i]->Clear();
 }
 //---------------------------------------------------------------------------
 
@@ -267,6 +292,8 @@ if (true == CheckBoxTriangle->Checked)
 void __fastcall TMainForm::ButtonClearClick(TObject *Sender)
 {
 ListViewNumbers->Clear();
+for(int i = 0; i < ChartFuzzy->SeriesCount(); ++i)
+	ChartFuzzy->Series[i]->Clear();
 }
 //---------------------------------------------------------------------------
 

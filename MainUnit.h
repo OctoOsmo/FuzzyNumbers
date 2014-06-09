@@ -69,6 +69,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	void DrawFuzzyNumber(FuzzyNumber x);
 	void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber);
+	void TMainForm::RedrawFuzzyNumberSeries();
 	void AddResultNumber(const FuzzyNumber &sum);
 	FuzzyNumber ParseFuzzyLVItem(TListItem *item);
 

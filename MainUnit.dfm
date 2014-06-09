@@ -66,7 +66,7 @@ object MainForm: TMainForm
       Marks.Callout.Arrow.Visible = True
       Marks.ShapeStyle = fosRoundRectangle
       Marks.Visible = False
-      SeriesColor = 10708548
+      SeriesColor = clRed
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
@@ -114,7 +114,7 @@ object MainForm: TMainForm
       Marks.Callout.Arrow.Visible = True
       Marks.ShapeStyle = fosRoundRectangle
       Marks.Visible = False
-      SeriesColor = clRed
+      SeriesColor = clBlue
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
@@ -304,6 +304,7 @@ object MainForm: TMainForm
       Top = 48
       Width = 73
       Height = 21
+      Enabled = False
       TabOrder = 5
       Text = '5'
     end
@@ -406,6 +407,8 @@ object MainForm: TMainForm
       Width = 97
       Height = 17
       Caption = #1058#1088#1077#1091#1075#1086#1083#1100#1085#1099#1077
+      Checked = True
+      State = cbChecked
       TabOrder = 0
       OnClick = CheckBoxTriangleClick
     end
@@ -415,8 +418,6 @@ object MainForm: TMainForm
       Width = 97
       Height = 17
       Caption = #1058#1088#1072#1087#1080#1094#1080#1074#1080#1076#1085#1099#1077
-      Checked = True
-      State = cbChecked
       TabOrder = 1
       OnClick = CheckBoxTrapezoidalClick
     end
