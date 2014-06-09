@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "MainUnit.h"
-
+#include <ustring.h>
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -17,17 +17,25 @@ __fastcall TMainForm::TMainForm(TComponent* Owner) : TForm(Owner) {
 // ---------------------------------------------------------------------------
 void __fastcall TMainForm::ButtonAddClick(TObject *Sender) {
 	try {
-		if (StrToFloat(EditL->Text) < 0)
-			throw Exception(_T("Ћевое значение должно быть неотрицательным"));
-		if (StrToFloat(EditR->Text) < 0)
-			throw Exception(_T("ѕравое значение должно быть неотрицательным"));
-		StrToFloat(EditM->Text);
+		double l, r, a, b;
+		l = StrToFloat(EditL->Text);
+		r = StrToFloat(EditR->Text);
+		a = StrToFloat(EditA->Text);
+		b = StrToFloat(EditB->Text);
+
+		if (l > a)
+			throw Exception(_T("Ћевое значение должно быть меньше правого модального"));
+		if (a > b)
+			throw Exception(_T("Ћевое модальное значение должно быть меньше правого"));
+		if (b > r)
+			throw Exception(_T("ѕравое модальное значение должно быть меньше правого значение"));
 
 		TListItem *ListItem;
 		ListItem = ListViewNumbers->Items->Add();
 		ListItem->Caption = ListItem->Index;
-		ListItem->SubItems->Add(EditM->Text);
 		ListItem->SubItems->Add(EditL->Text);
+		ListItem->SubItems->Add(EditA->Text);
+		ListItem->SubItems->Add(EditB->Text);
 		ListItem->SubItems->Add(EditR->Text);
 	}
 	catch (Exception &e) {
@@ -53,9 +61,10 @@ void __fastcall TMainForm::ButtonDeleteClick(TObject *Sender) {
 // ---------------------------------------------------------------------------
 void TMainForm::DrawFuzzyNumber(FuzzyNumber sum) {
 	ChartFuzzy->Series[0]->Clear();
-	ChartFuzzy->Series[0]->AddXY(sum.m - sum.a, 0, FloatToStr(sum.m - sum.a));
-	ChartFuzzy->Series[0]->AddXY(sum.m, 1, FloatToStr(sum.m));
-	ChartFuzzy->Series[0]->AddXY(sum.m + sum.b, 0, FloatToStr(sum.m + sum.b));
+	ChartFuzzy->Series[0]->AddXY(sum.m_l, 0, FloatToStrF(sum.m_l, ffGeneral, 4, 6));
+	ChartFuzzy->Series[0]->AddXY(sum.m_a, 1, FloatToStrF(sum.m_a, ffGeneral, 4, 6));
+	ChartFuzzy->Series[0]->AddXY(sum.m_b, 1, FloatToStrF(sum.m_b, ffGeneral, 4, 6));
+	ChartFuzzy->Series[0]->AddXY(sum.m_r, 0, FloatToStrF(sum.m_r, ffGeneral, 4, 6));
 }
 
 // ---------------------------------------------------------------------------
@@ -63,18 +72,20 @@ void TMainForm::AddResultNumber(const FuzzyNumber &sum) {
 	TListItem *ListItem;
 	ListItem = ListViewResult->Items->Add();
 	ListItem->Caption = ListItem->Index;
-	ListItem->SubItems->Add(sum.m);
-	ListItem->SubItems->Add(sum.a);
-	ListItem->SubItems->Add(sum.b);
+	ListItem->SubItems->Add(sum.m_l);
+	ListItem->SubItems->Add(sum.m_a);
+	ListItem->SubItems->Add(sum.m_b);
+	ListItem->SubItems->Add(sum.m_r);
 }
 
 // ---------------------------------------------------------------------------
 FuzzyNumber TMainForm::ParseFuzzyLVItem(TListItem *item) {
 	FuzzyNumber x;
 
-	x.m = StrToFloat(item->SubItems->operator[](0));
-	x.a = StrToFloat(item->SubItems->operator[](1));
-	x.b = StrToFloat(item->SubItems->operator[](2));
+	x.m_l = StrToFloat(item->SubItems->operator[](0));
+	x.m_a = StrToFloat(item->SubItems->operator[](1));
+	x.m_b = StrToFloat(item->SubItems->operator[](2));
+	x.m_r = StrToFloat(item->SubItems->operator[](3));
 
 	return x;
 }
@@ -135,30 +146,13 @@ void __fastcall TMainForm::ButtonInverseClick(TObject *Sender) {
 		for (int i = 0; i < ListViewNumbers->Items->Count; ++i) {
 			x = ParseFuzzyLVItem(ListViewNumbers->Items->Item[i]);
 
-			if ((x.m - x.a) * (x.m + x.b) <= 0) {
-				MessageBox(0, _T("ќбратного чилса не существует."),
+			if ((x.m_l * x.m_r) <= 0) {
+				MessageBox(0, _T("ќбратного числа не существует."),
 					_T("ќшибка!"), MB_ICONERROR);
 				return;
 			}
 
-			// check for zero middle value
-			if (x.m != 0) {
-				inverse.m = 1. / x.m;
-			}
-			else
-				inverse.m = 0;
-
-			// check for zero right value
-			if (0 == (x.m + x.b))
-				inverse.a = 0.0;
-			else
-				inverse.a = x.b * inverse.m / (x.m + x.b);
-
-			// check for zero left value
-			if (0 == (x.m - x.a))
-				inverse.b = 0.0;
-			else
-				inverse.b = x.a * inverse.m / (x.m - x.a);
+			inverse = FuzzyNumber::getInverse(x);
 
 			// add result
 			{
@@ -202,3 +196,10 @@ void __fastcall TMainForm::ListViewResultClick(TObject *Sender) {
 	}
 }
 // ---------------------------------------------------------------------------
+void __fastcall TMainForm::ListViewNumbersClick(TObject *Sender)
+{
+	if (ListViewNumbers->RowSelect && -1 != ListViewNumbers->ItemIndex)
+		DrawFuzzyNumber(ParseFuzzyLVItem(ListViewNumbers->ItemFocused));
+}
+//---------------------------------------------------------------------------
+

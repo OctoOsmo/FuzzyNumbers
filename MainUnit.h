@@ -23,9 +23,8 @@ __published:	// IDE-managed Components
 	TListView *ListViewNumbers;
 	TChart *ChartFuzzy;
 	TAreaSeries *Series1;
-	TListView *ListViewResult;
 	TGroupBox *GroupBoxInput;
-	TEdit *EditM;
+	TEdit *EditA;
 	TEdit *EditL;
 	TEdit *EditR;
 	TButton *ButtonAdd;
@@ -38,6 +37,9 @@ __published:	// IDE-managed Components
 	TButton *ButtonSub;
 	TButton *ButtonMultiply;
 	TButton *ButtonSum;
+	TLabel *Label1;
+	TEdit *EditB;
+	TListView *ListViewResult;
 	void __fastcall ButtonAddClick(TObject *Sender);
 	void __fastcall ButtonDeleteClick(TObject *Sender);
 	void __fastcall ButtonSumClick(TObject *Sender);
@@ -45,6 +47,7 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonInverseClick(TObject *Sender);
 	void __fastcall ButtonMultiplyClick(TObject *Sender);
 	void __fastcall ListViewResultClick(TObject *Sender);
+	void __fastcall ListViewNumbersClick(TObject *Sender);
 private:	// User declarations
 	void DrawFuzzyNumber(FuzzyNumber x);
 	void AddResultNumber(const FuzzyNumber &sum);
