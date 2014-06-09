@@ -282,18 +282,18 @@ object MainForm: TMainForm
       Text = '7'
     end
     object ButtonAdd: TButton
-      Left = 60
+      Left = 15
       Top = 87
-      Width = 115
+      Width = 109
       Height = 25
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074' '#1089#1087#1080#1089#1086#1082
       TabOrder = 3
       OnClick = ButtonAddClick
     end
     object ButtonDelete: TButton
-      Left = 193
+      Left = 130
       Top = 87
-      Width = 115
+      Width = 109
       Height = 25
       Caption = #1059#1076#1072#1083#1080#1090#1100' '#1080#1079' '#1089#1087#1080#1089#1082#1072
       TabOrder = 4
@@ -306,6 +306,15 @@ object MainForm: TMainForm
       Height = 21
       TabOrder = 5
       Text = '5'
+    end
+    object ButtonClear: TButton
+      Left = 245
+      Top = 87
+      Width = 109
+      Height = 25
+      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1089#1087#1080#1089#1086#1082
+      TabOrder = 6
+      OnClick = ButtonClearClick
     end
   end
   object GroupBoxOperation: TGroupBox

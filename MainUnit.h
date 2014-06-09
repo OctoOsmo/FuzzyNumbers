@@ -53,6 +53,7 @@ __published:	// IDE-managed Components
 	TLineSeries *Series2;
 	TLineSeries *Series3;
 	TLineSeries *Series4;
+	TButton *ButtonClear;
 	void __fastcall ButtonAddClick(TObject *Sender);
 	void __fastcall ButtonDeleteClick(TObject *Sender);
 	void __fastcall ButtonSumClick(TObject *Sender);
@@ -64,6 +65,7 @@ __published:	// IDE-managed Components
 	void __fastcall CheckBoxTriangleClick(TObject *Sender);
 	void __fastcall CheckBoxTrapezoidalClick(TObject *Sender);
 	void __fastcall EditAChange(TObject *Sender);
+	void __fastcall ButtonClearClick(TObject *Sender);
 private:	// User declarations
 	void DrawFuzzyNumber(FuzzyNumber x);
 	void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber);

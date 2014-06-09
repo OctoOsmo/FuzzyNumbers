@@ -79,6 +79,10 @@ void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber) {
 		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_a, 1, FloatToStrF(sum.m_a, ffGeneral, 4, 6));
 		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_b, 1, FloatToStrF(sum.m_b, ffGeneral, 4, 6));
 		ChartFuzzy->Series[seriesNumber]->AddXY(sum.m_r, 0, FloatToStrF(sum.m_r, ffGeneral, 4, 6));
+	}else
+	{
+		if(10 == seriesNumber)
+			MessageBox(0, _T("На графике отобразится только 10 чисел."),	_T("Предупреждение"), MB_OK);
 	}
 }
 
@@ -259,4 +263,11 @@ if (true == CheckBoxTriangle->Checked)
 }
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TMainForm::ButtonClearClick(TObject *Sender)
+{
+ListViewNumbers->Clear();
+}
+//---------------------------------------------------------------------------
+
 
