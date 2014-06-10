@@ -69,11 +69,13 @@ __published: // IDE-managed Components
 	void __fastcall CheckBoxTrapezoidalClick(TObject *Sender);
 	void __fastcall EditAChange(TObject *Sender);
 	void __fastcall ButtonClearClick(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
 
 private: // User declarations
 	void DrawFuzzyNumber(FuzzyNumber x);
 	void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber);
 	void TMainForm::RedrawFuzzyNumberSeries();
+	void TMainForm::AddResultError();
 	void AddResultNumber(const FuzzyNumber &sum);
 	FuzzyNumber ParseFuzzyLVItem(TListItem *item);
 

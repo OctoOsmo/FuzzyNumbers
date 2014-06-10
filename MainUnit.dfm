@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 0
   Caption = #1054#1087#1077#1088#1072#1094#1080#1080' '#1089' '#1085#1077#1095#1105#1090#1082#1080#1084#1080' '#1095#1080#1089#1083#1072#1084#1080
   ClientHeight = 467
-  ClientWidth = 774
+  ClientWidth = 778
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,8 +11,9 @@ object MainForm: TMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   DesignSize = (
-    774
+    778
     467)
   PixelsPerInch = 96
   TextHeight = 13
@@ -20,8 +21,8 @@ object MainForm: TMainForm
     Left = 8
     Top = 260
     Width = 377
-    Height = 197
-    Anchors = [akLeft, akBottom]
+    Height = 199
+    Anchors = [akLeft, akTop, akBottom]
     Columns = <
       item
         Caption = #8470
@@ -51,7 +52,7 @@ object MainForm: TMainForm
   object ChartFuzzy: TChart
     Left = 390
     Top = 8
-    Width = 383
+    Width = 387
     Height = 246
     Legend.Visible = False
     Title.Text.Strings = (
@@ -60,6 +61,11 @@ object MainForm: TMainForm
     TabOrder = 1
     Anchors = [akLeft, akTop, akRight, akBottom]
     DefaultCanvas = 'TGDIPlusCanvas'
+    PrintMargins = (
+      15
+      17
+      15
+      17)
     ColorPaletteIndex = 13
     object Series1: TLineSeries
       SeriesColor = clRed
@@ -165,40 +171,40 @@ object MainForm: TMainForm
   object GroupBoxInput: TGroupBox
     Left = 8
     Top = 8
-    Width = 370
+    Width = 376
     Height = 137
     Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099
     TabOrder = 2
     object LabelMiddle: TLabel
-      Left = 102
+      Left = 105
       Top = 29
       Width = 73
       Height = 13
       Caption = #1051#1077#1074'. '#1084#1086#1076#1072#1083#1100#1085'.'
     end
     object LabelLeft: TLabel
-      Left = 12
+      Left = 15
       Top = 29
       Width = 61
       Height = 13
       Caption = #1051#1077#1074#1086#1077' '#1079#1085#1072#1095'.'
     end
     object LabelRight: TLabel
-      Left = 281
+      Left = 284
       Top = 29
       Width = 59
       Height = 13
       Caption = #1055#1088#1072#1074'. '#1079#1085#1072#1095'.'
     end
     object Label1: TLabel
-      Left = 191
+      Left = 194
       Top = 29
       Width = 79
       Height = 13
       Caption = #1055#1088#1072#1074'. '#1084#1086#1076#1072#1083#1100#1085'.'
     end
     object EditA: TEdit
-      Left = 102
+      Left = 105
       Top = 48
       Width = 73
       Height = 21
@@ -207,7 +213,7 @@ object MainForm: TMainForm
       OnChange = EditAChange
     end
     object EditL: TEdit
-      Left = 12
+      Left = 15
       Top = 48
       Width = 73
       Height = 21
@@ -215,7 +221,7 @@ object MainForm: TMainForm
       Text = '2'
     end
     object EditR: TEdit
-      Left = 281
+      Left = 284
       Top = 48
       Width = 78
       Height = 21
@@ -223,7 +229,7 @@ object MainForm: TMainForm
       Text = '7'
     end
     object ButtonAdd: TButton
-      Left = 15
+      Left = 17
       Top = 87
       Width = 109
       Height = 25
@@ -232,7 +238,7 @@ object MainForm: TMainForm
       OnClick = ButtonAddClick
     end
     object ButtonDelete: TButton
-      Left = 130
+      Left = 132
       Top = 87
       Width = 109
       Height = 25
@@ -241,7 +247,7 @@ object MainForm: TMainForm
       OnClick = ButtonDeleteClick
     end
     object EditB: TEdit
-      Left = 192
+      Left = 195
       Top = 48
       Width = 73
       Height = 21
@@ -250,7 +256,7 @@ object MainForm: TMainForm
       Text = '5'
     end
     object ButtonClear: TButton
-      Left = 245
+      Left = 247
       Top = 87
       Width = 109
       Height = 25
@@ -306,7 +312,7 @@ object MainForm: TMainForm
   object ListViewResult: TListView
     Left = 391
     Top = 260
-    Width = 378
+    Width = 382
     Height = 199
     Anchors = [akLeft, akRight, akBottom]
     Columns = <
@@ -338,7 +344,7 @@ object MainForm: TMainForm
   object GroupBoxBumberType: TGroupBox
     Left = 189
     Top = 151
-    Width = 189
+    Width = 195
     Height = 103
     Caption = #1042#1080#1076' '#1074#1074#1086#1076#1080#1084#1099#1093' '#1095#1080#1089#1077#1083
     TabOrder = 5

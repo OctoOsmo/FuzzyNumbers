@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.838,C:\Users\al\Dropbox\Программы\Fuzzy Operations\FuzzyNumber.h=C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Documents\RAD Studio\Projects\Unit1.h=C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.236,=C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.838,C:\Users\al\Dropbox\Программы\Fuzzy Operations\FuzzyNumber.cpp=C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.697,C:\Users\al\Documents\RAD Studio\Projects\Project1.cbproj=C:\Users\al\Dropbox\Программы\Fuzzy Operations\ProjectFOperations.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.693,=C:\Users\al\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.753,=C:\Users\al\Dropbox\Программы\Fuzzy Operations\File1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.281,=E:\Projects\W.A.S.T.E\FuzzyNumbers-master\Unit1.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.665,=C:\Users\al\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.646,C:\Users\al\Documents\RAD Studio\Projects\Project1PCH1.h=C:\Users\al\Dropbox\Программы\Fuzzy Operations\ProjectFuzzyOperations.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Documents\RAD Studio\Projects\Unit1.cpp=C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.281,=E:\Projects\W.A.S.T.E\FuzzyNumbers-master\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.697,C:\Users\al\Dropbox\Программы\Fuzzy Operations\ProjectFOperations.cbproj=C:\Users\al\Documents\RAD Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.dfm=C:\Users\al\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.cpp=C:\Users\al\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.646,C:\Users\al\Dropbox\Программы\Fuzzy Operations\ProjectFuzzyOperations.h=C:\Users\al\Documents\RAD Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.686,C:\Users\al\Dropbox\Программы\Fuzzy Operations\MainUnit.h=C:\Users\al\Documents\RAD Studio\Projects\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.753,=C:\Users\al\Dropbox\Программы\Fuzzy Operations\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.838,C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.h=C:\Users\al\Dropbox\Программы\Fuzzy Operations\FuzzyNumber.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.838,C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.cpp=C:\Users\al\Dropbox\Программы\Fuzzy Operations\FuzzyNumber.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.236,=C:\Users\al\Dropbox\Программы\Fuzzy Operations\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.693,=C:\Users\al\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="MainUnit.cpp"/>

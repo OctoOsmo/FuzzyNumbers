@@ -77,15 +77,24 @@ void __fastcall TMainForm::ButtonDeleteClick(TObject *Sender)
 // ---------------------------------------------------------------------------
 void TMainForm::DrawFuzzyNumber(FuzzyNumber sum)
 {
-	ChartFuzzy->Series[0]->Clear();
-	ChartFuzzy->Series[0]->AddXY(sum.m_l, 0,
-		FloatToStrF(sum.m_l, ffGeneral, 4, 6));
-	ChartFuzzy->Series[0]->AddXY(sum.m_a, 1,
-		FloatToStrF(sum.m_a, ffGeneral, 4, 6));
-	ChartFuzzy->Series[0]->AddXY(sum.m_b, 1,
-		FloatToStrF(sum.m_b, ffGeneral, 4, 6));
-	ChartFuzzy->Series[0]->AddXY(sum.m_r, 0,
-		FloatToStrF(sum.m_r, ffGeneral, 4, 6));
+	try
+	{
+		ChartFuzzy->Series[0]->Clear();
+		ChartFuzzy->Series[0]->AddXY(sum.m_l, 0,
+			FloatToStrF(sum.m_l, ffGeneral, 4, 6));
+		ChartFuzzy->Series[0]->AddXY(sum.m_a, 1,
+			FloatToStrF(sum.m_a, ffGeneral, 4, 6));
+		ChartFuzzy->Series[0]->AddXY(sum.m_b, 1,
+			FloatToStrF(sum.m_b, ffGeneral, 4, 6));
+		ChartFuzzy->Series[0]->AddXY(sum.m_r, 0,
+			FloatToStrF(sum.m_r, ffGeneral, 4, 6));
+	}
+	catch (Exception &e)
+	{
+		MessageBox(0, e.ToString().c_str(), _T("Ошибка вывода числа на график"),
+			MB_ICONWARNING);
+		return;
+	}
 }
 
 // ---------------------------------------------------------------------------
@@ -120,7 +129,7 @@ void TMainForm::RedrawFuzzyNumberSeries()
 		MessageBox(0, _T("На графике отобразится только 10 чисел."),
 		_T("Предупреждение"), MB_OK);
 	if (10 < Count)
-		Count = 10;
+		Count = 9;
 	for (int i = 1; i <= Count; ++i) // Series number hardcode
 	{
 		FuzzyNumber listFuzzy =
@@ -152,15 +161,25 @@ void TMainForm::AddResultNumber(const FuzzyNumber &sum)
 }
 
 // ---------------------------------------------------------------------------
+void TMainForm::AddResultError()
+{
+	TListItem *ListItem;
+	ListItem = ListViewResult->Items->Add();
+	ListItem->Caption = ListItem->Index;
+	ListItem->SubItems->Add("Ошибка");
+	/* ListItem->SubItems->Add(sum.m_a);
+	 ListItem->SubItems->Add(sum.m_b);
+	 ListItem->SubItems->Add(sum.m_r); */
+}
+
+// ---------------------------------------------------------------------------
 FuzzyNumber TMainForm::ParseFuzzyLVItem(TListItem *item)
 {
 	FuzzyNumber x;
-
 	x.m_l = StrToFloat(item->SubItems->operator[](0));
 	x.m_a = StrToFloat(item->SubItems->operator[](1));
 	x.m_b = StrToFloat(item->SubItems->operator[](2));
 	x.m_r = StrToFloat(item->SubItems->operator[](3));
-
 	return x;
 }
 
@@ -231,9 +250,11 @@ void __fastcall TMainForm::ButtonInverseClick(TObject *Sender)
 
 			if ((x.m_l * x.m_r) <= 0)
 			{
-				MessageBox(0, _T("Обратного числа не существует."),
-					_T("Ошибка!"), MB_ICONERROR);
-				return;
+				/* MessageBox(0, _T("Обратного числа не существует."),
+				 _T("Ошибка!"), MB_ICONERROR); */
+				AddResultError();
+				// return;
+				continue;
 			}
 
 			inverse = FuzzyNumber::getInverse(x);
@@ -279,9 +300,19 @@ void __fastcall TMainForm::ButtonMultiplyClick(TObject *Sender)
 
 void __fastcall TMainForm::ListViewResultClick(TObject *Sender)
 {
-	if (ListViewResult->RowSelect && -1 != ListViewResult->ItemIndex)
+	try
 	{
-		DrawFuzzyNumber(ParseFuzzyLVItem(ListViewResult->ItemFocused));
+		if (ListViewResult->RowSelect && -1 != ListViewResult->ItemIndex)
+		{
+			DrawFuzzyNumber(ParseFuzzyLVItem(ListViewResult->ItemFocused));
+		}
+	}
+	catch (Exception &e)
+	{
+		MessageBox(0, wcscat(e.ToString().c_str(),
+			_T("\nДанное число невозможно вывести на график")),
+			_T("Ошибка вывода числа на график"), MB_ICONWARNING);
+		return;
 	}
 }
 
@@ -345,5 +376,13 @@ void __fastcall TMainForm::ButtonClearClick(TObject *Sender)
 	ListViewNumbers->Clear();
 	for (int i = 0; i < ChartFuzzy->SeriesCount(); ++i)
 		ChartFuzzy->Series[i]->Clear();
+}
+
+// ---------------------------------------------------------------------------
+void __fastcall TMainForm::FormCreate(TObject *Sender)
+{
+	ChartFuzzy->Series[2]->Color = clNavy;
+	for (int i = 0; i < 10; ++i)
+		ChartFuzzy->Series[i]->Pen->Width = 5;
 }
 // ---------------------------------------------------------------------------
