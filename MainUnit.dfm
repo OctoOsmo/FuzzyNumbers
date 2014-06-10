@@ -59,162 +59,103 @@ object MainForm: TMainForm
     View3D = False
     TabOrder = 1
     Anchors = [akLeft, akTop, akRight, akBottom]
+    DefaultCanvas = 'TGDIPlusCanvas'
     ColorPaletteIndex = 13
     object Series1: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = clRed
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series2: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = clLime
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series3: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = clYellow
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series4: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = clBlue
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series5: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = clAqua
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series6: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = clFuchsia
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series7: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = 8421440
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series8: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = 4227200
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series9: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = 33023
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
       YValues.Order = loNone
     end
     object Series10: TLineSeries
-      Marks.Arrow.Visible = True
-      Marks.Callout.Brush.Color = clBlack
-      Marks.Callout.Arrow.Visible = True
-      Marks.ShapeStyle = fosRoundRectangle
-      Marks.Visible = False
       SeriesColor = 16744448
       Brush.BackColor = clDefault
       Pointer.InflateMargins = True
       Pointer.Style = psRectangle
-      Pointer.Visible = False
       XValues.Name = 'X'
       XValues.Order = loAscending
       YValues.Name = 'Y'
@@ -395,9 +336,9 @@ object MainForm: TMainForm
     OnClick = ListViewResultClick
   end
   object GroupBoxBumberType: TGroupBox
-    Left = 201
+    Left = 189
     Top = 151
-    Width = 177
+    Width = 189
     Height = 103
     Caption = #1042#1080#1076' '#1074#1074#1086#1076#1080#1084#1099#1093' '#1095#1080#1089#1077#1083
     TabOrder = 5

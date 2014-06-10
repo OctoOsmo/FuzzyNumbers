@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 #ifndef MainUnitH
 #define MainUnitH
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
@@ -17,10 +17,12 @@
 
 #include "FuzzyNumber.h"
 #include <Vcl.CheckLst.hpp>
-//---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
 class TMainForm : public TForm
 {
-__published:	// IDE-managed Components
+__published: // IDE-managed Components
+
 	TListView *ListViewNumbers;
 	TChart *ChartFuzzy;
 	TGroupBox *GroupBoxInput;
@@ -54,6 +56,7 @@ __published:	// IDE-managed Components
 	TLineSeries *Series3;
 	TLineSeries *Series4;
 	TButton *ButtonClear;
+
 	void __fastcall ButtonAddClick(TObject *Sender);
 	void __fastcall ButtonDeleteClick(TObject *Sender);
 	void __fastcall ButtonSumClick(TObject *Sender);
@@ -66,17 +69,19 @@ __published:	// IDE-managed Components
 	void __fastcall CheckBoxTrapezoidalClick(TObject *Sender);
 	void __fastcall EditAChange(TObject *Sender);
 	void __fastcall ButtonClearClick(TObject *Sender);
-private:	// User declarations
+
+private: // User declarations
 	void DrawFuzzyNumber(FuzzyNumber x);
 	void TMainForm::DrawFuzzyNumberSeries(FuzzyNumber sum, int seriesNumber);
 	void TMainForm::RedrawFuzzyNumberSeries();
 	void AddResultNumber(const FuzzyNumber &sum);
 	FuzzyNumber ParseFuzzyLVItem(TListItem *item);
 
-public:		// User declarations
+public: // User declarations
 	__fastcall TMainForm(TComponent* Owner);
 };
-//---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
 extern PACKAGE TMainForm *MainForm;
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 #endif

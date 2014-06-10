@@ -51,11 +51,6 @@
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Config)'=='Deb' or '$(Cfg_3)'!=''">
-        <Cfg_3>true</Cfg_3>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <SanitizedProjectName>ProjectFOperations</SanitizedProjectName>
         <ProjectType>CppVCLApplication</ProjectType>
@@ -124,6 +119,12 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <ILINK_ClearState>true</ILINK_ClearState>
+        <ILINK_ReplaceResources>true</ILINK_ReplaceResources>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DynamicRTL>false</DynamicRTL>
+        <ILINK_LibraryPath>$(BDS)\lib\win32\release\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <LinkPackageImports>rtl.bpi;vcl.bpi;Tee.bpi;vclimg.bpi;vclx.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
@@ -149,10 +150,6 @@
         <FormResources Include="MainUnit.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
-            <CfgParent>Base</CfgParent>
-        </BuildConfiguration>
-        <BuildConfiguration Include="Deb">
-            <Key>Cfg_3</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
         <BuildConfiguration Include="Base">
@@ -219,11 +216,8 @@
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Program Files (x86)\Raize\CS5\Bin\CodeSiteExpressPkg_Design180.bpl">File C:\Program Files (x86)\Raize\CS5\Bin\CodeSiteExpressPkg_Design180.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k180.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp180.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k180.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp180.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k200.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp200.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment/>
